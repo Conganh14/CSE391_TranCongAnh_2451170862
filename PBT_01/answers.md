@@ -268,4 +268,4 @@ Tuy nhiên, <div> vẫn rất phù hợp khi dùng làm container bố cục, v�
 
 ## Link Video Phần D:
 
-Link =
+Link = https://drive.google.com/file/d/1Uw5gjT7Oixxw5ztdyaS2lpooRVsuBtko/view?usp=sharing
