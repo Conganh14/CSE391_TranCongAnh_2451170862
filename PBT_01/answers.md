@@ -105,3 +105,167 @@ Kết quả là:
 ---
 
 # PHẦN C — SUY LUẬN
+
+## Câu C1:
+
+```html
+<!doctype html>
+<html lang="vi">
+  <head>
+    <!-- head chứa thông tin cấu hình của trang -->
+    <meta charset="UTF-8" />
+    <!-- hỗ trợ tiếng Việt -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- responsive -->
+    <title>Chi tiết sản phẩm</title>
+    <!-- tiêu đề tab trình duyệt -->
+  </head>
+
+  <body>
+    <!-- HEADER: phần đầu trang -->
+    <header>
+      <!-- nav vì đây là khu vực điều hướng chính -->
+      <nav aria-label="menu chính">
+        <ul>
+          <!-- ul vì menu không cần thứ tự -->
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Điện thoại</a></li>
+          <li><a href="#">Laptop</a></li>
+          <li><a href="#">Khuyến mãi</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- main vì chứa nội dung chính duy nhất của trang -->
+    <main>
+      <!-- nav vì breadcrumb là điều hướng -->
+      <nav aria-label="breadcrumb">
+        <ol>
+          <!-- ol vì breadcrumb có thứ tự cấp bậc -->
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Điện thoại</a></li>
+          <li><a href="#">iPhone 16</a></li>
+        </ol>
+      </nav>
+
+      <!-- section vì gom nhóm nội dung sản phẩm -->
+      <section>
+        <!-- article vì đây là nội dung độc lập: 1 sản phẩm -->
+        <article>
+          <!-- header của sản phẩm -->
+          <header>
+            <h1>iPhone 16 Pro Max</h1>
+            <!-- h1 là tiêu đề chính -->
+          </header>
+
+          <!-- section vì đây là khu ảnh sản phẩm -->
+          <section>
+            <h2>Hình ảnh sản phẩm</h2>
+
+            <!-- figure vì ảnh có ý nghĩa độc lập -->
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500"
+                alt="Ảnh chính iPhone 16"
+              />
+              <figcaption>Ảnh sản phẩm chính</figcaption>
+            </figure>
+
+
+          <!-- section vì nhóm thông tin mô tả -->
+          <section>
+            <h2>Thông tin sản phẩm</h2>
+
+            <p><strong>Giá:</strong> 32.990.000đ</p>
+            <!-- p cho đoạn văn -->
+            <p><strong>Đánh giá:</strong> ⭐⭐⭐⭐⭐</p>
+            <p>Điện thoại cao cấp với chip mạnh và camera đẹp.</p>
+          </section>
+
+          <!-- section vì nhóm bảng thông số -->
+          <section>
+            <h2>Thông số kỹ thuật</h2>
+
+            <!-- table vì dữ liệu dạng hàng cột -->
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Thông số</th>
+                  <th>Chi tiết</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Màn hình</td>
+                  <td>6.9 inch OLED</td>
+                </tr>
+                <tr>
+                  <td>RAM</td>
+                  <td>8GB</td>
+                </tr>
+                <tr>
+                  <td>Bộ nhớ</td>
+                  <td>256GB</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- section vì nhóm đánh giá -->
+          <section>
+            <h2>Bình luận</h2>
+
+            <!-- article vì mỗi bình luận độc lập -->
+            <article>
+              <h3>Người dùng A</h3>
+              <p>Máy đẹp và mượt.</p>
+            </article>
+
+            <article>
+              <h3>Người dùng B</h3>
+              <p>Pin rất tốt.</p>
+            </article>
+          </section>
+        </article>
+
+        <!-- aside vì nội dung phụ liên quan -->
+        <aside>
+          <h2>Sản phẩm tương tự</h2>
+
+          <ul>
+            <!-- ul vì danh sách sản phẩm -->
+            <li><a href="#">iPhone 15</a></li>
+            <li><a href="#">Samsung S25</a></li>
+            <li><a href="#">Xiaomi 15</a></li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <!-- footer vì đây là chân trang -->
+    <footer>
+      <p>&copy; 2026 Shop Công Nghệ</p>
+    </footer>
+
+  </body>
+</html>
+```
+
+## Câu C2:
+
+Ý kiến “chỉ cần dùng <div> cho mọi thứ” có thể nhanh lúc đầu, nhưng không tối ưu khi làm web chuyên nghiệp. Semantic HTML quan trọng vì giúp trình duyệt, công cụ tìm kiếm và thiết bị hỗ trợ hiểu ý nghĩa nội dung của trang.
+
+Lý do kỹ thuật đầu tiên là SEO. Google không chỉ đọc chữ mà còn phân tích cấu trúc HTML để xác định đâu là tiêu đề, menu, nội dung chính hay bài viết riêng biệt. Nếu tất cả đều là <div>, bot tìm kiếm khó hiểu trang hơn. Ngược lại, các thẻ như <header>, <nav>, <main>, <article> giúp tăng khả năng index chính xác và hỗ trợ xếp hạng tốt hơn.
+
+Lý do thứ hai là Accessibility. Người khiếm thị dùng screen reader để truy cập web. Các thẻ semantic cho phép thiết bị đọc hiểu từng khu vực như điều hướng, nội dung chính, chân trang và hỗ trợ di chuyển nhanh giữa các phần. Nếu chỉ dùng <div>, trải nghiệm sẽ kém và khó sử dụng hơn.
+
+Ví dụ cụ thể: một trang báo dùng <article> cho mỗi bài viết, bên trong có <h1> tiêu đề và <time> ngày đăng. Khi đó screen reader sẽ thông báo đây là một bài viết độc lập, còn Google cũng dễ nhận diện nội dung chính của trang.
+
+Tuy nhiên, <div> vẫn rất phù hợp khi dùng làm container bố cục, ví dụ chia cột bằng Flexbox/Grid, bọc nhóm sản phẩm hoặc tạo hiệu ứng animation bằng CSS/JavaScript. Tóm lại, <div> dùng để sắp xếp giao diện, còn semantic HTML dùng để mô tả ý nghĩa nội dung. Dùng đúng chỗ mới là cách làm hiệu quả.
+
+---
+
+## Link Video Phần D:
+
+Link =
