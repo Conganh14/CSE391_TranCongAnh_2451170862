@@ -87,4 +87,21 @@ Kết quả là:
 
 ---
 
+## Câu B4:
+
+## 1. Phân tích thẻ Semantic HTML5 (Tab Elements)
+
+### 3 thẻ Semantic được sử dụng đúng:
+
+- **Thẻ `<header>`**: Nằm ở đầu trang, bao bọc logo, ô tìm kiếm và các nút danh mục chính.
+- **Thẻ `<nav>`**: Chứa các đường link điều hướng nhanh như "Lịch sử đơn hàng", "24h Công nghệ".
+- **Thẻ `<section>`**: Dùng để bao bọc các khối nội dung lớn như "SĂN SALE ONLINE" hoặc "XU HƯỚNG MUA SẮM".
+
+### 2 thẻ chưa dùng đúng Semantic:
+
+- **Sử dụng `<h3>` hoặc `<h4>` cho icon**: Một số vị trí dùng thẻ tiêu đề chỉ để hiển thị biểu tượng thay vì dùng thẻ nội dòng như `<i>` hoặc `<span>`.
+- **Lạm dụng `<div>` cho danh sách sản phẩm**: Thay vì dùng thẻ `<article>` cho mỗi chiếc điện thoại, trang web dùng rất nhiều lớp `div` lồng nhau, khiến máy tìm kiếm khó xác định thực thể sản phẩm độc lập.
+
+---
+
 # PHẦN C — SUY LUẬN
