@@ -116,6 +116,7 @@ Liệt kê 10 input types khác nhau trong HTML5, cho mỗi type:
 
 # Câu C1:
 
+```
 - **Lỗi 1:** Dòng 2 — Input "Tên" không có `<label for="...">`, vi phạm accessibility.
   - **Sửa:** `<label for="name">Tên:</label> <input type="text" id="name" name="name" required>`
 
@@ -139,5 +140,92 @@ Liệt kê 10 input types khác nhau trong HTML5, cho mỗi type:
 
 - **Lỗi 8:** Toàn bộ Form — Thiếu thuộc tính `method="POST"`.
   - **Sửa:** Thêm `method="POST"` vì form có chứa mật khẩu (bảo mật).
+```
 
 # Câu C2:
+
+**Form đăng ký cho ngân hàng số:**
+
+```html
+<form>
+  <label>CMND/CCCD:</label><br />
+  <input
+    type="text"
+    name="cccd"
+    required
+    pattern="^\d{12}$"
+    title="Vui lòng nhập đúng 12 chữ số CCCD"
+    placeholder="Nhập 12 chữ số"
+  />
+  <br /><br />
+  <label>Số tài khoản:</label><br />
+  <input
+    type="text"
+    name="stk"
+    required
+    pattern="^\d{10,15}$"
+    title="Số tài khoản phải từ 10 đến 15 chữ số"
+    placeholder="Nhập từ 10 đến 15 chữ số"
+  />
+  <br /><br />
+
+  <label>Email:</label><br />
+  <input type="email" name="email" required placeholder="Nhập địa chỉ email" />
+  <br /><br />
+
+  <label>Mã PIN:</label><br />
+  <input
+    type="password"
+    name="pin"
+    required
+    pattern="^\d{6}$"
+    title="Mã PIN phải gồm đúng 6 chữ số"
+    placeholder="Nhập 6 chữ số"
+  />
+  <br /><br />
+
+  <button type="submit">Đăng ký</button>
+</form>
+```
+
+**Câu hỏi**
+
+1. Viết pattern regex cho CMND/CCCD và Số tài khoản:
+
+- **CMND/CCCD** (đúng 12 chữ số):
+  ```html
+  <input type="text" pattern="[0-9]{12}" placeholder="Nhập 12 chữ số" />
+  ```
+- **Số tài khoản** (đúng 10-15 chữ số):
+
+```html
+<input type="text" pattern="[0-9]{10,15}" placeholder="Nhập 10-15 chữ số" />
+```
+
+2. HTML5 validation có đủ an toàn cho ứng dụng ngân hàng không? Tại sao?
+
+- KHÔNG đủ an toàn! Lý do:
+- HTML5 validation chỉ kiểm tra định dạng dữ liệu (format), không kiểm tra logic nghiệp vụ (business logic)
+- Ví dụ: Pattern [0-9]{12} chỉ kiểm tra "12 chữ số", nhưng không kiểm tra CMND có thật hay không
+- Người dùng có thể vô hiệu hóa HTML5 validation bằng DevTools → gửi dữ liệu sai lên server
+- Ngân hàng phải validate bắt buộc ở Backend để đảm bảo an toàn
+
+3. Liệt kê 3 loại validation mà HTML5 KHÔNG THỂ làm được (phải dùng JavaScript):
+
+- Validation 1: So sánh giữa 2 ô input
+  - Ví dụ: Kiểm tra "Mật khẩu" và "Nhập lại mật khẩu" có khớp không?
+  - HTML5 không thể → Phải dùng JavaScript để so sánh giá trị
+
+- Validation 2: Kiểm tra logic nghiệp vụ (Business Logic)
+  - Ví dụ: Kiểm tra CMND có hợp lệ theo thuật toán checksum, hoặc CMND chưa bị khóa
+  - HTML5 chỉ kiểm tra format → Phải dùng JavaScript gọi API backend
+
+- Validation 3: Kiểm tra dữ liệu trùng lặp (Duplicate Check)
+  - Ví dụ: Kiểm tra email/số tài khoản có bị trùng trong database không?
+  - HTML5 không có quyền truy cập database → Phải dùng JavaScript/AJAX để gửi lên server
+
+4. Nêu 2 rủi ro bảo mật nếu chỉ validate Frontend mà không validate Backend:
+
+- Dữ liệu rác/độc hại làm hỏng Database: Kẻ tấn công có thể dùng các công cụ như Postman để gửi thẳng dữ liệu "xấu" (ví dụ: chứa mã độc SQL Injection) lên Server mà không cần qua giao diện Web. Nếu Backend không kiểm tra lại, hệ thống có thể bị sập hoặc lộ dữ liệu.
+
+- Gian lận và sai lệch logic nghiệp vụ: Nếu chỉ kiểm tra số tiền rút ở Frontend, một lập trình viên có thể sửa code F12 để gửi yêu cầu rút 1 tỷ đồng dù trong tài khoản chỉ có 1 triệu. Nếu Backend không xác thực lại quyền hạn và số dư, ngân hàng sẽ bị thất thoát tài sản.

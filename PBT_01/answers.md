@@ -254,18 +254,12 @@ Kết quả là:
 
 ## Câu C2:
 
-Ý kiến “chỉ cần dùng <div> cho mọi thứ” có thể nhanh lúc đầu, nhưng không tối ưu khi làm web chuyên nghiệp. Semantic HTML quan trọng vì giúp trình duyệt, công cụ tìm kiếm và thiết bị hỗ trợ hiểu ý nghĩa nội dung của trang.
-
-Lý do kỹ thuật đầu tiên là SEO. Google không chỉ đọc chữ mà còn phân tích cấu trúc HTML để xác định đâu là tiêu đề, menu, nội dung chính hay bài viết riêng biệt. Nếu tất cả đều là <div>, bot tìm kiếm khó hiểu trang hơn. Ngược lại, các thẻ như <header>, <nav>, <main>, <article> giúp tăng khả năng index chính xác và hỗ trợ xếp hạng tốt hơn.
-
-Lý do thứ hai là Accessibility. Người khiếm thị dùng screen reader để truy cập web. Các thẻ semantic cho phép thiết bị đọc hiểu từng khu vực như điều hướng, nội dung chính, chân trang và hỗ trợ di chuyển nhanh giữa các phần. Nếu chỉ dùng <div>, trải nghiệm sẽ kém và khó sử dụng hơn.
-
-Ví dụ cụ thể: một trang báo dùng <article> cho mỗi bài viết, bên trong có <h1> tiêu đề và <time> ngày đăng. Khi đó screen reader sẽ thông báo đây là một bài viết độc lập, còn Google cũng dễ nhận diện nội dung chính của trang.
-
-Tuy nhiên, <div> vẫn rất phù hợp khi dùng làm container bố cục, ví dụ chia cột bằng Flexbox/Grid, bọc nhóm sản phẩm hoặc tạo hiệu ứng animation bằng CSS/JavaScript. Tóm lại, <div> dùng để sắp xếp giao diện, còn semantic HTML dùng để mô tả ý nghĩa nội dung. Dùng đúng chỗ mới là cách làm hiệu quả.
-
----
+1. Ý kiến “chỉ cần dùng <div> cho mọi thứ” có thể nhanh lúc đầu, nhưng không tối ưu khi làm web chuyên nghiệp. Semantic HTML quan trọng vì giúp trình duyệt, công cụ tìm kiếm và thiết bị hỗ trợ hiểu ý nghĩa nội dung của trang.
+   Lý do kỹ thuật đầu tiên là SEO. Google không chỉ đọc chữ mà còn phân tích cấu trúc HTML để xác định đâu là tiêu đề, menu, nội dung chính hay bài viết riêng biệt. Nếu tất cả đều là <div>, bot tìm kiếm khó hiểu trang hơn. Ngược lại, các thẻ như <header>, <nav>, <main>, <article> giúp tăng khả năng index chính xác và hỗ trợ xếp hạng tốt hơn.
+   Lý do thứ hai là Accessibility. Người khiếm thị dùng screen reader để truy cập web. Các thẻ semantic cho phép thiết bị đọc hiểu từng khu vực như điều hướng, nội dung chính, chân trang và hỗ trợ di chuyển nhanh giữa các phần. Nếu chỉ dùng <div>, trải nghiệm sẽ kém và khó sử dụng hơn.
+   Ví dụ cụ thể: một trang báo dùng <article> cho mỗi bài viết, bên trong có <h1> tiêu đề và <time> ngày đăng. Khi đó screen reader sẽ thông báo đây là một bài viết độc lập, còn Google cũng dễ nhận diện nội dung chính của trang.
+   Tuy nhiên, <div> vẫn rất phù hợp khi dùng làm container bố cục, ví dụ chia cột bằng Flexbox/Grid, bọc nhóm sản phẩm hoặc tạo hiệu ứng animation bằng CSS/JavaScript. Tóm lại, <div> dùng để sắp xếp giao diện, còn semantic HTML dùng để mô tả ý nghĩa nội dung. Dùng đúng chỗ mới là cách làm hiệu quả.
 
 ## Link Video Phần D:
 
-Link = https://drive.google.com/file/d/1Uw5gjT7Oixxw5ztdyaS2lpooRVsuBtko/view?usp=sharing
+1. Link = https://drive.google.com/file/d/1Uw5gjT7Oixxw5ztdyaS2lpooRVsuBtko/view?usp=sharing
