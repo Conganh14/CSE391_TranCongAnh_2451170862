@@ -112,6 +112,35 @@ Liệt kê 10 input types khác nhau trong HTML5, cho mỗi type:
    - Cách 2 thiên về cấu trúc ngữ nghĩa (Semantic HTML), giúp tốt cho SEO và hỗ trợ
      tối đa cho các thiết bị hỗ trợ người khiếm thị.
 
+# PHẦN B - THỰC HÀNH CODE
+
+## Bài B1:GIẢI THÍCH: TẠI SAO HTML KHÔNG THỂ VALIDATE "CONFIRM PASSWORD"?
+
+## 1. HTML chỉ hiểu "Từng ô đơn lẻ", không hiểu "Mối quan hệ"
+
+Các thuộc tính **validation** của HTML được thiết kế để kiểm tra dữ liệu độc lập bên trong chính ô đó:
+
+- **Ví dụ:** \* Ô Email: Có chứa ký tự `@` không?
+  - Ô Password: Có đủ `minlength="8"` không?
+    HTML không có khả năng "nhìn" sang ô khác để so sánh. Việc đối chiếu hai nguồn dữ liệu khác nhau (Ô A có bằng Ô B không?) là một hành động thuộc về **Logic**. HTML là ngôn ngữ đánh dấu, không phải ngôn ngữ lập trình, nên nó không có "tư duy" để thực hiện phép so sánh này.
+
+## 2. HTML là ngôn ngữ đánh dấu tĩnh (Static)
+
+HTML đóng vai trò là "bộ khung" với các quy tắc cố định. Để xác nhận mật khẩu, trình duyệt cần thực hiện một phép tính:
+
+> **Logic:** `Nếu (Giá trị_Ô_1 == Giá trị_Ô_2) -> Thành công`
+> Phép toán so sánh `==` này chỉ tồn tại trong:
+
+- **Client-side:** JavaScript.
+- **Server-side:** PHP, C#, Java, Python...
+
+## 3. Sự giới hạn của thuộc tính `pattern`
+
+Nhiều người đặt câu hỏi: _"Tại sao không dùng Regex trong thuộc tính `pattern`?"_
+
+- **Bản chất của `pattern`:** Kiểm tra dữ liệu dựa trên một "khuôn mẫu" **cố định** (Ví dụ: Số điện thoại phải là 10 chữ số).
+- **Vấn đề:** Mật khẩu của mỗi người dùng là một **biến số** (mỗi người nhập một kiểu khác nhau). Vì giá trị của ô Password đầu tiên không cố định, nên bạn không thể tạo ra một cái "khuôn" tĩnh để khớp cho ô Confirm Password.
+
 ## Phần C
 
 # Câu C1:
