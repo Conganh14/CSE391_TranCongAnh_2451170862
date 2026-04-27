@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopTLU</title>
+  </head>
+  <body>
+    <!-- 1. Ít nhất 3 ảnh dùng figure + figcaption -->
+    <h1>Trang giới thiệu sản phẩm</h1>
+    <figure>
+      <img
+        src="https://www.techone.vn/wp-content/uploads/2025/09/Thumb-sp-17-series_0001_17-prm-cam-1536x1536.jpg"
+        alt="Iphone 17 Pro Max"
+        loading="lazy"
+        style="max-width: 100%; height: auto"
+      />
+      <figcaption>Điện thoại Iphone 17 Pro Max</figcaption>
+      <br />
+    </figure>
+    <figure>
+      <img
+        src="https://tse4.mm.bing.net/th/id/OIP.vclX5UuDu_WpipL7FhV1jAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+        alt="Pocket 3"
+        loading="lazy"
+        style="max-width: 100%; height: auto"
+      />
+      <figcaption>Pocket 3</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="https://meta.vn/Data/Image/2022/11/30/may-pha-cafe-winci-cm3020-13.jpg"
+        alt="Máy pha cà phê Winci CM3020"
+        loading="lazy"
+        style="max-width: 100%; height: auto"
+      />
+      <figcaption>Máy pha cà phê Winci CM3020</figcaption>
+    </figure>
+
+    <!-- 2. Video nhúng YouTube -->
+    <h2>Video giới thiệu Youtube</h2>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/RAG8GQ1NJlg"
+      title="YouTube video player"
+      allowfullscreen
+    ></iframe>
+
+    <!-- 3. Thẻ video có controls + poster + 2 source -->
+    <h2>Video giới thiệu sản phẩm</h2>
+    <video controls poster="https://picsum.photos/500/300" width="560">
+      <source src="path/to/video1.mp4" type="video/mp4" />
+      <source src="path/to/video1.webm" type="video/webm" />
+      Trình duyệt không hỗ trợ video.
+    </video>
+    <!-- 4. Thẻ audio -->
+    <h2>Nhạc nền giới thiệu</h2>
+
+    <audio controls>
+      <source src="music.mp3" type="audio/mpeg" />
+      Trình duyệt không hỗ trợ audio.
+    </audio>
+
+    <!-- 5. SVG inline -->
+    <h2>Logo sản phẩm</h2>
+
+    <svg width="120" height="120">
+      <circle cx="60" cy="60" r="50" fill="blue"></circle>
+      <text x="35" y="68" fill="white" font-size="20">TLU</text>
+    </svg>
+  </body>
+</html>
