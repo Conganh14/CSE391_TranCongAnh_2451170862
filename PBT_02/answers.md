@@ -258,3 +258,5 @@ Nhiều người đặt câu hỏi: _"Tại sao không dùng Regex trong thuộc
 - Dữ liệu rác/độc hại làm hỏng Database: Kẻ tấn công có thể dùng các công cụ như Postman để gửi thẳng dữ liệu "xấu" (ví dụ: chứa mã độc SQL Injection) lên Server mà không cần qua giao diện Web. Nếu Backend không kiểm tra lại, hệ thống có thể bị sập hoặc lộ dữ liệu.
 
 - Gian lận và sai lệch logic nghiệp vụ: Nếu chỉ kiểm tra số tiền rút ở Frontend, một lập trình viên có thể sửa code F12 để gửi yêu cầu rút 1 tỷ đồng dù trong tài khoản chỉ có 1 triệu. Nếu Backend không xác thực lại quyền hạn và số dư, ngân hàng sẽ bị thất thoát tài sản.
+
+# Link Phần D : https://drive.google.com/file/d/1msbAso3Jl3lO27_okuAVMyI83pZASBMY/view?usp=sharing
