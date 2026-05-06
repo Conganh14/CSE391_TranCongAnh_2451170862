@@ -291,3 +291,14 @@ Màu đen
 ```
 
 Vì `!important` ưu tiên cao hơn rule thường.
+
+# Câu B1 Phần thực hành B
+
+# Các selector đã dùng trong bài
+
+1.  -                 universal
+2.  body element
+3.  .active class
+4.  nav a descendant
+5.  a:hover pseudo-class
+6.  tr:nth-child() pseudo-class
