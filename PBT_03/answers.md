@@ -368,3 +368,37 @@ Dưới đây là bảng thống kê các rules đã sử dụng trong file `spe
   2.  Layout bị vỡ (phần content bị đẩy xuống dòng) vì tổng chiều rộng thực tế của hai khối lớn hơn chiều rộng của container cha.Tổng chiều rộng thực tế: $342px$ (sidebar) + $722px$ (content) = 1064pxChiều rộng Container: 960pxVì 1064px > 960px, không còn đủ không gian trống trên cùng một hàng nên thuộc tính float: left sẽ đẩy phần tử đứng sau (content) xuống dòng dưới.
   3.  Cách 1: Sử dụng box-sizing: border-box (Cách khuyên dùng)Cách này sẽ gộp cả padding và border vào trong chiều rộng (width) đã khai báo ban đầu.Giải pháp: Thêm box-sizing: border-box cho cả hai. Khi đó sidebar vẫn là $300px$, content vẫn là $660px$. Tổng = $960px$ (khớp hoàn toàn với container).
       Cách 2: Không dùng border-box (Tính toán thủ công)Ta phải trừ bớt phần padding và border ra khỏi giá trị width để tổng cuối cùng đạt đúng con số mong muốn.Sidebar mới: $300px - (20px * 2) - (1px * 2) =$ 258pxContent mới: $660px - (30px * 2) - (1px * 2) =$ 598pxKiểm tra: $258px + 42px$ (padding+border) + $598px + 62px$ (padding+border) = 960px.
+
+# Câu C2 (10đ) — Cascade Puzzle
+
+1. "Sản phẩm A" (h2) có font-size và color là gì?
+
+Kết quả: font-size: 20px, color: green.
+
+Giải thích:
+
+Font-size: Có hai rules tác động là .container { font-size: 14px } (kế thừa) và .card .title { font-size: 20px }. Rule .card .title nhắm trực tiếp vào phần tử nên thắng.
+
+Color: Có ba rules tác động: .card { color: blue } (kế thừa), #featured .title { color: red } (độ ưu tiên cao vì có ID), và .highlight { color: green !important }. Do có từ khóa !important, rule này phá vỡ mọi cấp độ Specificity thông thường và giành chiến thắng tuyệt đối.
+
+2. "Mô tả sản phẩm" (p trong card featured) có color là gì?
+
+Kết quả: color: blue.
+
+Giải thích: Rule .card p { color: inherit } ép trình duyệt phải lấy giá trị màu từ phần tử cha trực tiếp của nó. Cha trực tiếp của thẻ p này là thẻ div có class .card. Thẻ .card đang được set màu là blue. Vì vậy, màu được kế thừa xuống là màu xanh.
+
+3. "Sản phẩm B" (h2) có font-size và color là gì?
+
+Kết quả: font-size: 20px, color: blue.
+
+Giải thích:
+
+Font-size: Tương tự câu 1, rule .card .title { font-size: 20px } nhắm trực tiếp nên được áp dụng.
+
+Color: Thẻ h2 này không có class .highlight và không nằm trong #featured. Do đó, nó không có rule nào nhắm trực tiếp vào màu sắc. Nó sẽ kế thừa màu sắc từ cha gần nhất có định nghĩa màu là .card { color: blue }.
+
+4. "Mô tả sản phẩm B" (p.highlight) có color là gì?
+
+Kết quả: color: green.
+
+Giải thích: Mặc dù có rule .card p { color: inherit }, nhưng thẻ p này có class .highlight. Rule .highlight { color: green !important } có sức mạnh tối thượng nhờ !important, nó đè bẹp tất cả các rule khác để áp đặt màu xanh lá.
