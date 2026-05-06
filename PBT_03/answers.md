@@ -360,3 +360,11 @@ Dưới đây là bảng thống kê các rules đã sử dụng trong file `spe
 - **Trả lời:**
   - Kết quả **KHÔNG** thay đổi nếu các rules có điểm Specificity khác nhau. Trình duyệt luôn ưu tiên rule có điểm cao hơn.
   - Kết quả **CHỈ** thay đổi nếu hai rules có cùng điểm Specificity. Khi đó, rule nào được viết sau (nằm dưới) sẽ thắng do quy tắc Cascade (Dòng chảy).
+
+  ## PHẦN C — DEBUG & SUY LUẬN
+
+  # Câu C1 (10đ) — Debug CSS Layout
+  1.  Theo mặc định (box-sizing: content-box), chiều rộng thực tế của một phần tử được tính bằng công thức:Total Width = width + padding-left + padding-right + border-left + border-rightDựa vào code trong ảnh, ta có:Sidebar:$300px$ (width) + $20px$ (padding-left) + $20px$ (padding-right) + $1px$ (border-left) + $1px$ (border-right) = 342pxContent:$660px$ (width) + $30px$ (padding-left) + $30px$ (padding-right) + $1px$ (border-left) + $1px$ (border-right) = 722px
+  2.  Layout bị vỡ (phần content bị đẩy xuống dòng) vì tổng chiều rộng thực tế của hai khối lớn hơn chiều rộng của container cha.Tổng chiều rộng thực tế: $342px$ (sidebar) + $722px$ (content) = 1064pxChiều rộng Container: 960pxVì 1064px > 960px, không còn đủ không gian trống trên cùng một hàng nên thuộc tính float: left sẽ đẩy phần tử đứng sau (content) xuống dòng dưới.
+  3.  Cách 1: Sử dụng box-sizing: border-box (Cách khuyên dùng)Cách này sẽ gộp cả padding và border vào trong chiều rộng (width) đã khai báo ban đầu.Giải pháp: Thêm box-sizing: border-box cho cả hai. Khi đó sidebar vẫn là $300px$, content vẫn là $660px$. Tổng = $960px$ (khớp hoàn toàn với container).
+      Cách 2: Không dùng border-box (Tính toán thủ công)Ta phải trừ bớt phần padding và border ra khỏi giá trị width để tổng cuối cùng đạt đúng con số mong muốn.Sidebar mới: $300px - (20px * 2) - (1px * 2) =$ 258pxContent mới: $660px - (30px * 2) - (1px * 2) =$ 598pxKiểm tra: $258px + 42px$ (padding+border) + $598px + 62px$ (padding+border) = 960px.

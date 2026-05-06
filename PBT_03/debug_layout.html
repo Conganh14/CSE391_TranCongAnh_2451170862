@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Debug CSS Layout</title>
+    <link rel="stylesheet" href="debug_layout.css" />
+  </head>
+  <body>
+    <h2>Cách 1: Dùng border-box</h2>
+    <div class="container fix-1">
+      <div class="sidebar">Sidebar (300px)</div>
+      <div class="content">Content (660px)</div>
+    </div>
+
+    <div style="clear: both; margin-bottom: 50px"></div>
+
+    <h2>Cách 2: Không dùng border-box (Tính lại width)</h2>
+    <div class="container fix-2">
+      <div class="sidebar">Sidebar (Tính lại)</div>
+      <div class="content">Content (Tính lại)</div>
+    </div>
+  </body>
+</html>
