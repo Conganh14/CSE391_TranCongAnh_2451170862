@@ -302,3 +302,31 @@ Vì `!important` ưu tiên cao hơn rule thường.
 4.  nav a descendant
 5.  a:hover pseudo-class
 6.  tr:nth-child() pseudo-class
+
+# Câu B3 phần thực hành B
+
+## Phần 1
+
+Hộp 1 (content-box): chiều rộng thực tế = 350px
+Hộp 2 (border-box): chiều rộng thực tế = 300px
+Giải thích:
+
+content-box:
+300 + 20*2 + 5*2 = 350px
+
+border-box:
+padding + border được tính bên trong 300px.
+
+## Phần 2
+
+Tổng layout = 1000px
+
+Sidebar = 250px  
+Content = 500px  
+Ads = 250px
+
+Tổng:
+
+250 + 500 + 250 = 1000px
+
+Nếu không dùng border-box, tổng sẽ lớn hơn 1000px vì padding làm tăng kích thước thực tế.
