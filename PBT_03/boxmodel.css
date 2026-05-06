@@ -1,5 +1,7 @@
 /* Phần 1 */
-
+* {
+  box-sizing: border-box;
+}
 .wrapper {
   display: flex;
   gap: 20px;
@@ -11,13 +13,9 @@
   border: 5px solid black;
   background-color: lightblue;
 }
-
-/* Hộp 1 */
 .content-box {
   box-sizing: content-box;
 }
-
-/* Hộp 2 */
 .border-box {
   box-sizing: border-box;
 }
