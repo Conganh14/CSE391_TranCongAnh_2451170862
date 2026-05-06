@@ -303,7 +303,7 @@ Vì `!important` ưu tiên cao hơn rule thường.
 5.  a:hover pseudo-class
 6.  tr:nth-child() pseudo-class
 
-# Câu B3 phần thực hành B
+# Câu B2 phần thực hành B
 
 ## Phần 1
 
@@ -330,3 +330,33 @@ Tổng:
 250 + 500 + 250 = 1000px
 
 Nếu không dùng border-box, tổng sẽ lớn hơn 1000px vì padding làm tăng kích thước thực tế.
+
+# Câu B3 phần thực hành B
+
+## 1. Danh sách 10 CSS Rules và Specificity Score
+
+Dưới đây là bảng thống kê các rules đã sử dụng trong file `specificity.css`:
+
+| Thứ tự | CSS Rule                         | Màu sắc | Specificity Score |
+| :----- | :------------------------------- | :------ | :---------------- |
+| 1      | `*`                              | Gray    | 0, 0, 0           |
+| 2      | `p`                              | Red     | 0, 0, 1           |
+| 3      | `body p`                         | Blue    | 0, 0, 2           |
+| 4      | `.text`                          | Green   | 0, 1, 0           |
+| 5      | `.text.highlight`                | Orange  | 0, 2, 0           |
+| 6      | `p.text.highlight`               | Purple  | 0, 2, 1           |
+| 7      | `#demo`                          | Brown   | 1, 0, 0           |
+| 8      | `p#demo`                         | Cyan    | 1, 0, 1           |
+| 9      | `#demo.text`                     | Magenta | 1, 1, 0           |
+| 10     | `html body #demo.text.highlight` | Black   | 1, 2, 2           |
+
+## 2. Kết quả hiển thị
+
+- **Màu hiển thị cuối cùng:** Màu **Black** (Đen).
+- **Tại sao?**: Vì rule `html body #demo.text.highlight` có điểm Specificity cao nhất (1, 2, 2). Theo quy tắc ưu tiên của trình duyệt, rule nào có điểm cụ thể cao hơn sẽ được áp dụng, bất kể thứ tự xuất hiện trong file CSS.
+
+## 4. hay đổi thứ tự rules trong CSS file. Kết quả có đổi không? Giải thích.
+
+- **Trả lời:**
+  - Kết quả **KHÔNG** thay đổi nếu các rules có điểm Specificity khác nhau. Trình duyệt luôn ưu tiên rule có điểm cao hơn.
+  - Kết quả **CHỈ** thay đổi nếu hai rules có cùng điểm Specificity. Khi đó, rule nào được viết sau (nằm dưới) sẽ thắng do quy tắc Cascade (Dòng chảy).

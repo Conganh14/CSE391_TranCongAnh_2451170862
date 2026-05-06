@@ -1,0 +1,49 @@
+/* 1. Universal Selector - Specificity: (0, 0, 0) */
+* {
+  color: gray;
+}
+
+/* 2. Element Selector - Specificity: (0, 0, 1) */
+p {
+  color: red;
+}
+
+/* 3. Descendant Selector (2 Elements) - Specificity: (0, 0, 2) */
+body p {
+  color: blue;
+}
+
+/* 4. Class Selector - Specificity: (0, 1, 0) */
+.text {
+  color: green;
+}
+
+/* 5. Multiple Classes - Specificity: (0, 2, 0) */
+.text.highlight {
+  color: orange;
+}
+
+/* 6. Element + Class combination - Specificity: (0, 2, 1) */
+p.text.highlight {
+  color: purple;
+}
+
+/* 7. ID Selector - Specificity: (1, 0, 0) */
+#demo {
+  color: brown;
+}
+
+/* 8. ID + Element combination - Specificity: (1, 0, 1) */
+p#demo {
+  color: cyan;
+}
+
+/* 9. ID + Class combination - Specificity: (1, 1, 0) */
+#demo.text {
+  color: magenta;
+}
+
+/* 10. High Specificity combination - Specificity: (1, 2, 2) */
+html body #demo.text.highlight {
+  color: black;
+}
