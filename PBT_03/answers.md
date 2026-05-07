@@ -362,9 +362,49 @@ Dưới đây là bảng thống kê các rules đã sử dụng trong file `spe
   - Kết quả **KHÔNG** thay đổi nếu các rules có điểm Specificity khác nhau. Trình duyệt luôn ưu tiên rule có điểm cao hơn.
   - Kết quả **CHỈ** thay đổi nếu hai rules có cùng điểm Specificity. Khi đó, rule nào được viết sau (nằm dưới) sẽ thắng do quy tắc Cascade (Dòng chảy).
 
-  ## PHẦN C — DEBUG & SUY LUẬN
+# PHẦN C — DEBUG & SUY LUẬN
 
-  # Câu C1 (10đ) — Debug CSS Layout
+# Câu C1 (10đ) — Debug CSS Layout
+
+1.  Sidebar:
+    300 + (20×2) + (1×2)
+    = 342px
+
+Content:
+660 + (30×2) + (1×2)
+= 722px
+
+Tổng:
+342 + 722 = 1064px
+
+2.
+
+Container = 960px
+
+1064px > 960px
+
+=> Không đủ chỗ
+=> .content bị đẩy xuống dòng mới
+=> Layout bị vỡ
+
+3.  /_ Cách 1: Dùng border-box _/
+
+- {
+  box-sizing: border-box;
+  }
+
+/_ Cách 2: Không dùng border-box _/
+/_ Tự trừ padding + border _/
+
+.sidebar {
+width: 258px;
+/_ 300 - 40 - 2 _/
+}
+
+.content {
+width: 598px;
+/_ 660 - 60 - 2 _/
+}
 
 # Câu C2 (10đ) — Cascade Puzzle
 
