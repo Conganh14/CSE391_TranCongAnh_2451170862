@@ -296,7 +296,7 @@ Vì `!important` ưu tiên cao hơn rule thường.
 
 # Các selector đã dùng trong bài
 
-1.  -                 universal
+1.  universal
 2.  body element
 3.  .active class
 4.  nav a descendant
@@ -353,7 +353,8 @@ Dưới đây là bảng thống kê các rules đã sử dụng trong file `spe
 ## 2. Kết quả hiển thị
 
 - **Màu hiển thị cuối cùng:** Màu **Black** (Đen).
-- **Tại sao?**: Vì rule `html body #demo.text.highlight` có điểm Specificity cao nhất (1, 2, 2). Theo quy tắc ưu tiên của trình duyệt, rule nào có điểm cụ thể cao hơn sẽ được áp dụng, bất kể thứ tự xuất hiện trong file CSS.
+- **Tại sao?**: Vì rule `html body #demo.text.highlight` có điểm Specificity cao nhất (1, 2, 2).
+  Theo quy tắc ưu tiên của trình duyệt, rule nào có điểm cụ thể cao hơn sẽ được áp dụng, bất kể thứ tự xuất hiện trong file CSS.
 
 ## 4. hay đổi thứ tự rules trong CSS file. Kết quả có đổi không? Giải thích.
 
@@ -364,10 +365,6 @@ Dưới đây là bảng thống kê các rules đã sử dụng trong file `spe
   ## PHẦN C — DEBUG & SUY LUẬN
 
   # Câu C1 (10đ) — Debug CSS Layout
-  1.  Theo mặc định (box-sizing: content-box), chiều rộng thực tế của một phần tử được tính bằng công thức:Total Width = width + padding-left + padding-right + border-left + border-rightDựa vào code trong ảnh, ta có:Sidebar:$300px$ (width) + $20px$ (padding-left) + $20px$ (padding-right) + $1px$ (border-left) + $1px$ (border-right) = 342pxContent:$660px$ (width) + $30px$ (padding-left) + $30px$ (padding-right) + $1px$ (border-left) + $1px$ (border-right) = 722px
-  2.  Layout bị vỡ (phần content bị đẩy xuống dòng) vì tổng chiều rộng thực tế của hai khối lớn hơn chiều rộng của container cha.Tổng chiều rộng thực tế: $342px$ (sidebar) + $722px$ (content) = 1064pxChiều rộng Container: 960pxVì 1064px > 960px, không còn đủ không gian trống trên cùng một hàng nên thuộc tính float: left sẽ đẩy phần tử đứng sau (content) xuống dòng dưới.
-  3.  Cách 1: Sử dụng box-sizing: border-box (Cách khuyên dùng)Cách này sẽ gộp cả padding và border vào trong chiều rộng (width) đã khai báo ban đầu.Giải pháp: Thêm box-sizing: border-box cho cả hai. Khi đó sidebar vẫn là $300px$, content vẫn là $660px$. Tổng = $960px$ (khớp hoàn toàn với container).
-      Cách 2: Không dùng border-box (Tính toán thủ công)Ta phải trừ bớt phần padding và border ra khỏi giá trị width để tổng cuối cùng đạt đúng con số mong muốn.Sidebar mới: $300px - (20px * 2) - (1px * 2) =$ 258pxContent mới: $660px - (30px * 2) - (1px * 2) =$ 598pxKiểm tra: $258px + 42px$ (padding+border) + $598px + 62px$ (padding+border) = 960px.
 
 # Câu C2 (10đ) — Cascade Puzzle
 
