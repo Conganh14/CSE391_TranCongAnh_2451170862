@@ -1,4 +1,4 @@
-# PHẦN A — KIỂM TRA ĐỌC HIỂU (20 điểm)
+# PHẦN A — KIỂM TRA ĐỌC HIỂU
 
 ## Câu A1 (10đ) — 5 Loại Positioning - Tài liệu tham chiếu: tuan_2_css_core/12_css_positioning.md
 
@@ -37,9 +37,7 @@ Là:
 
 CSS sẽ tìm từ element hiện tại đi ngược lên các thẻ cha. Gặp thẻ đầu tiên có `position` khác `static` thì dùng thẻ đó làm mốc định vị.
 
-## Câu A2 (10đ) — Flexbox vs Grid - Tài liệu tham chiếu: tuan_3_css_advanced/13_creating_responsive_layouts.md
-
-# Câu A2 — Flexbox vs Grid
+## Câu A2 — Flexbox vs Grid - Tài liệu tham chiếu: tuan_3_css_advanced/13_creating_responsive_layouts.md
 
 ## Trường hợp 1
 
