@@ -186,3 +186,40 @@ Bố cục:
 - Hàng 3: 1 item
 
 → **Item cuối (số 7) nằm ở cột đầu tiên của hàng thứ 3**
+
+# PHẦN C — SUY LUẬN
+
+## Câu C1 — Flexbox vs Grid: Khi nào dùng gì?
+
+1. Navigation bar ngang (logo + menu + buttons)
+
+→ Flexbox
+
+Lý do: Đây là layout 1 chiều (theo hàng ngang), Flexbox giúp căn chỉnh, spacing, và align rất thuận tiện.
+
+2. Lưới ảnh Instagram (3 cột đều nhau, số ảnh không biết trước)
+
+→ Grid
+
+Lý do: Đây là layout 2 chiều (hàng + cột), Grid giúp chia cột đều và tự động xuống hàng dễ dàng.
+
+3. Layout blog (main content + sidebar)
+
+→ Grid
+
+Lý do: Có các vùng bố cục rõ ràng theo cột, Grid kiểm soát kích thước các vùng tốt hơn.
+
+4. Footer với 4 cột thông tin
+
+→ Grid
+
+Lý do: Cần chia nhiều cột đều nhau, Grid phù hợp cho bố cục nhiều vùng.
+
+5. Card sản phẩm (ảnh trên, text giữa, nút dưới — nút luôn dính đáy)
+
+→ Kết hợp cả hai
+
+Grid/Flex cho layout tổng thể card list
+Flexbox bên trong card (flex-direction: column) để nút luôn nằm dưới.
+
+Lý do: Kết hợp giúp vừa quản lý bố cục ngoài, vừa căn chỉnh nội dung bên trong tốt.
