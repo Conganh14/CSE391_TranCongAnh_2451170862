@@ -223,3 +223,119 @@ Grid/Flex cho layout tổng thể card list
 Flexbox bên trong card (flex-direction: column) để nút luôn nằm dưới.
 
 Lý do: Kết hợp giúp vừa quản lý bố cục ngoài, vừa căn chỉnh nội dung bên trong tốt.
+
+### Câu C2 — Debug Flexbox
+
+**Lỗi 1:** Cards không đều chiều cao — nút "Mua" bị nhảy lên/xuống
+
+```css
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  width: 30%;
+  margin: 1.5%;
+}
+.card img {
+  width: 100%;
+}
+.card h3 {
+  font-size: 18px;
+}
+.card .btn {
+  padding: 10px;
+}
+```
+
+# Nguyên nhân:
+
+1. Các .card chứa lượng nội dung khác nhau (card có text dài, card có text ngắn), nên chiều cao mỗi card không bằng nhau.
+2. Do button .btn đang nằm ngay sau nội dung nên nó bị đẩy lên/xuống theo độ dài text, khiến các nút không thẳng hàng.
+
+# Cách sửa
+
+```css
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.card {
+  width: 30%;
+  margin: 1.5%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin-top: auto;
+}
+```
+
+**Lỗi 2:** Muốn items nằm giữa cả ngang lẫn dọc trong container 100vh, nhưng item vẫn dính góc trái trên
+
+```css
+.hero {
+  height: 100vh;
+  display: flex;
+}
+.hero-content {
+  text-align: center;
+}
+```
+
+# Nguyên Nhân
+
+1. Container .hero đã dùng display: flex, nhưng chưa thiết lập căn giữa theo trục ngang và trục dọc.
+2. Flexbox mặc định đặt item ở vị trí bắt đầu (flex-start), nên nội dung nằm ở góc trên bên trái thay vì ở giữa.
+
+# Cách sửa
+
+```css
+.hero {
+  height: 100vh;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+```
+
+**Lỗi 3:** Sidebar bị co lại khi content quá dài
+
+```css
+.layout {
+  display: flex;
+}
+.sidebar {
+  width: 250px;
+}
+.content {
+  flex: 1;
+}
+```
+
+# Nguyên Nhân
+
+1. Trong Flexbox, mặc định các item có: `css flex-shrink: 1;` nên sidebar được phép co lại khi thiếu không gian.
+
+# Cách sửa
+
+```css
+.layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  border: 1px solid black;
+}
+
+.content {
+  flex: 1;
+}
+```
