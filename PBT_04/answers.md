@@ -1,6 +1,6 @@
 # PHẦN A — KIỂM TRA ĐỌC HIỂU
 
-## Câu A1 (10đ) — 5 Loại Positioning - Tài liệu tham chiếu: tuan_2_css_core/12_css_positioning.md
+## Câu A1 — 5 Loại Positioning - Tài liệu tham chiếu: tuan_2_css_core/12_css_positioning.md
 
 | Position   | Vẫn chiếm chỗ trong flow? | Tham chiếu vị trí                       | Cuộn theo trang? | Use case                                  |
 | ---------- | ------------------------- | --------------------------------------- | ---------------- | ----------------------------------------- |
