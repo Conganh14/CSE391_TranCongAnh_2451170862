@@ -1,0 +1,79 @@
+body {
+  font-family: $font-primary;
+  background: $background-color;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $primary-color;
+  padding: 12px $spacing-md;
+}
+
+.logo {
+  color: $secondary-color;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card {
+  background: $secondary-color;
+  border: 1px solid $border-color;
+  border-radius: $spacing-sm;
+  overflow: hidden;
+
+  @include card-shadow;
+
+  img {
+    width: 100%;
+  }
+
+  h3 {
+    padding: 10px 12px;
+  }
+
+  p {
+    color: $text-muted;
+    padding: 0 12px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+  }
+
+  &.featured {
+    border: 2px solid $accent-color;
+  }
+}
+
+.card-footer {
+  @include flex-center;
+  justify-content: space-between;
+
+  button {
+    background: $accent-color;
+    color: $secondary-color;
+    border: none;
+    padding: 6px 14px;
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+}
+
+@include respond-to($breakpoint-tablet) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include respond-to($breakpoint-desktop) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

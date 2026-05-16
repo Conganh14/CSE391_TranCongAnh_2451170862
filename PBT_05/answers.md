@@ -321,3 +321,9 @@ sass --watch style.scss:style.css
 ```
 
 Trong HTML link file CSS như bình thường
+
+# Bài B3 — SCSS Refactor
+
+## Compile SCSS → CSS
+
+sass scss/style.scss css/style.css
