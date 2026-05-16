@@ -328,7 +328,7 @@ Trong HTML link file CSS như bình thường
 
 sass scss/style.scss css/style.css
 
-# Câu C1 :
+# Câu C1 - Phân tích trang web thực
 
 ## Mobile (375px)
 
@@ -383,3 +383,118 @@ Các phần bị ẩn gồm:
 ## Desktop
 
 - Khoảng 14px–16px
+
+# Câu C2 - Thiết kế Responsive Strategy
+
+========== MOBILE ==========
+
+[ HEADER ]
+[ HERO ]
+
+[ FOOD 1 ]
+[ FOOD 2 ]
+[ FOOD 3 ]
+[ FOOD 4 ]
+[ FOOD 5 ]
+[ FOOD 6 ]
+
+[ BOOKING FORM ]
+
+[ GOOGLE MAP ]
+
+[ FOOTER ]
+
+Mobile:
+
+- Ẩn slogan/text phụ
+- Form nằm dưới gallery
+
+========== TABLET ==========
+
+[ HEADER ]
+
+[ HERO ]
+
+[ FOOD ] [ FOOD ] [ FOOD ]
+[ FOOD ] [ FOOD ] [ FOOD ]
+
+[ BOOKING FORM ]
+
+[ GOOGLE MAP ]
+
+[ FOOTER ]
+
+Tablet:
+
+- Gallery: 3 cột
+- Map nằm dưới form
+
+========== DESKTOP ==========
+
+[ HEADER ]
+
+[ HERO ]
+
+[ FOOD ] [ FOOD ] [ FOOD ]
+[ FOOD ] [ FOOD ] [ FOOD ]
+
+[ BOOKING FORM ] [ GOOGLE MAP ]
+
+[ FOOTER ]
+
+Desktop:
+
+- Layout 2 cột
+- Không dùng sidebar
+
+-->
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  gap: 20px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero {
+  width: 100%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.booking-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.footer {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .booking-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+```
