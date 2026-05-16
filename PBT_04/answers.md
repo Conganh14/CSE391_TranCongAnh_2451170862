@@ -339,3 +339,5 @@ Lý do: Kết hợp giúp vừa quản lý bố cục ngoài, vừa căn chỉnh
   flex: 1;
 }
 ```
+
+# Phần D Link Video : https://drive.google.com/file/d/1UoXH5bPmipL7qWSJDqnCfMUPzh6BAXIe/view?usp=sharing
