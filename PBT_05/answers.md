@@ -327,3 +327,59 @@ Trong HTML link file CSS như bình thường
 ## Compile SCSS → CSS
 
 sass scss/style.scss css/style.css
+
+# Câu C1 :
+
+## Mobile (375px)
+
+- Navigation được thu gọn.
+- Ưu tiên thanh tìm kiếm, icon giỏ hàng, tài khoản.
+- Một số menu phụ bị ẩn.
+
+## Tablet (768px)
+
+- Navigation hiển thị nhiều mục hơn mobile.
+- Thanh tìm kiếm lớn hơn.
+- Một số danh mục uất hiện.
+
+## Desktop (1440px)
+
+- Navigation hiển thị đầy đủ.
+- Có menu ngang và dropdown.
+
+# 2. Lưới content thay đổi mấy cột?
+
+## Mobile (375px)
+
+- Hiển thị 2 cột sản phẩm.
+
+## Tablet (768px)
+
+- Hiển thị 4 cột sản phẩm.
+
+## Desktop (1440px)
+
+- Hiển thị 6 cột sản phẩm.
+
+# 3. Elements nào bị ẩn trên mobile?
+
+Các phần bị ẩn gồm:
+
+- Banner quảng cáo phụ
+- Footer chi tiết
+- Shortcut categories phụ
+- Một số module quảng cáo
+
+# 4. Font size có thay đổi không?
+
+## Mobile
+
+- Khoảng 12px–14px
+
+## Tablet
+
+- Khoảng 14px–15px
+
+## Desktop
+
+- Khoảng 14px–16px
