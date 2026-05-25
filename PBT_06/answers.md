@@ -54,3 +54,75 @@ Bootstrap sử dụng triết lý **mobile-first**: các class được áp dụ
 - `col-12` đã tự động áp dụng cho **mọi kích thước** (kể cả sm) khi không có class nào ghi đè.
 - Khi màn hình đạt breakpoint `md` (≥ 768px), `col-md-6` mới ghi đè lên.
 - Vì vậy, viết thêm `col-sm-12` là **thừa** — Bootstrap đã xử lý mặc định rồi.
+
+## Câu A2 — Utilities & Components
+
+1.
+
+- `d-none`: Ẩn element ở mọi kích thước màn hình.
+- `d-md-block`: Hiển thị element dưới dạng `block` khi màn hình từ `md` trở lên.
+
+### Kết luận
+
+- Màn hình nhỏ hơn `768px` (`md`)  
+  → Element bị ẩn.
+- Màn hình từ `768px` trở lên  
+  → Element hiển thị dạng `block`.
+
+2.
+
+### `mt-3`
+
+- `m` = margin
+- `t` = top
+- `3` = mức khoảng cách
+
+→ Tạo margin phía trên.
+
+### `mb-auto`
+
+- `m` = margin
+- `b` = bottom
+- `auto` = tự động
+
+→ Margin-bottom tự động.
+
+### `px-4`
+
+- `p` = padding
+- `x` = left + right
+- `4` = mức khoảng cách
+
+→ Tạo padding trái và phải.
+
+### `py-2`
+
+- `p` = padding
+- `y` = top + bottom
+- `2` = mức khoảng cách
+
+→ Tạo padding trên và dưới.
+
+### `ms-5`
+
+- `m` = margin
+- `s` = start
+- `5` = mức khoảng cách
+
+→ Tạo margin bên trái.
+
+3.
+
+### `.container`
+
+- Có chiều rộng cố định theo từng breakpoint.
+- Tự căn giữa màn hình.
+
+### `.container-fluid`
+
+- Chiếm toàn bộ chiều rộng màn hình (`width: 100%`).
+
+### `.container-md`
+
+- Nhỏ hơn `md`: full width.
+- Từ `md` trở lên: giống `.container`.
