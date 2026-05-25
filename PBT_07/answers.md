@@ -80,3 +80,106 @@ console.log({} + []); --> 0 hoặc "[object Object]"
 
 - - (cộng): Nếu có string → nối chuỗi; nếu không → cộng số
 - -, \*, /, %: Luôn convert sang số trước khi tính
+
+## Câu A3 — So sánh == vs ===
+
+```javascript
+console.log(5 == "5"); //T
+console.log(5 === "5"); //F
+console.log(null == undefined); //T
+console.log(null === undefined); //F
+console.log(NaN == NaN); //F
+console.log(0 == false); //T
+console.log(0 === false); //F
+console.log("" == false); //T
+```
+
+## Quy tắc nên dùng : ===
+
+1, Rõ ràng, dễ dự đoán:
+
+- === chỉ so sánh value + type, không có "ma thuật"
+- == có quy tắc coercion phức tạp, dễ gây lỗi
+
+2. An toàn hơn:
+
+- Avoid bugs như 0 == false mà bạn không mong muốn
+- Làm rõ ý định: bạn muốn so sánh gì chính xác
+
+3. Hiệu năng:
+
+- === nhanh hơn vì không cần type conversion
+
+4. Chuẩn mực ngành:
+
+- ESLint, Prettier, các guide JavaScript khuyến nghị dùng ===
+- Code style của Google, Airbnb, Facebook đều dùng ===
+
+## Câu A4 — Truthy & Falsy
+
+### Chỉ có 6 giá trị Falsy:
+
+1. false (boolean)
+2. 0 (số không)
+3. "" (string rỗng)
+4. null
+5. undefined
+6. NaN
+
+```javascript
+if ("0") console.log("A"); // In "A"
+if ("") console.log("B"); // Không in "B"
+if ([]) console.log("C"); // In "C"
+if ({}) console.log("D"); // In "D"
+if (null) console.log("E"); // Không in "E"
+if (0) console.log("F"); // Không in "F"
+if (-1) console.log("G"); // In "G"
+if (" ") console.log("H"); // In "H"
+```
+
+## Câu A5 — Template Literals
+
+1. Cách 1: Nối chuỗi đơn giản
+
+```js
+// Cũ (concatenation):
+var greeting = "Xin chào " + name + "! Bạn " + age + " tuổi.";
+
+// Mới (template literal):
+var greeting = `Xin chào ${name}! Bạn ${age} tuổi.`;
+```
+
+2. Cách 2: URL động
+
+```js
+// Cũ (concatenation):
+var url = "https://api.example.com/users/" + userId + "/orders?page=" + page;
+
+// Mới (template literal):
+var url = `https://api.example.com/users/${userId}/orders?page=${page}`;
+```
+
+3. Cách 3: HTML đa dòng (ưu điểm lớn nhất của template literals)
+
+```js
+// Cũ (concatenation):
+var html =
+  '<div class="card">' +
+  "<h2>" +
+  title +
+  "</h2>" +
+  "<p>" +
+  description +
+  "</p>" +
+  "<span>Giá: " +
+  price +
+  "đ</span>" +
+  "</div>";
+
+// Mới (template literal):
+var html = `<div class="card">
+    <h2>${title}</h2>
+    <p>${description}</p>
+    <span>Giá: ${price}đ</span>
+</div>`;
+```
