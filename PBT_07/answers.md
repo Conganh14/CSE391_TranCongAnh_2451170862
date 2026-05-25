@@ -46,3 +46,37 @@ console.log("Ngoài block:", a);
 | let             | Bị lỗi dù cũng có hoisting     |
 | const array     | Vẫn sửa được phần tử           |
 | let trong block | Không ảnh hưởng biến bên ngoài |
+
+## Câu A2 — Data Types & Coercion
+
+```javascript
+console.log(typeof null); --> "object"
+console.log(typeof undefined); --> "undefined"
+console.log(typeof NaN); --> "number"
+console.log("5" + 3); --> "53"
+console.log("5" - 3); --> 2
+console.log("5" * "3"); --> 15
+console.log(true + true); --> 2
+console.log([] + []); --> ""
+console.log([] + {}); --> "[object Object]"
+console.log({} + []); --> 0 hoặc "[object Object]"
+```
+
+## Giải thích:
+
+### "5" + 3 = "53" (String Concatenation)
+
+- Operator + có 2 chức năng: cộng số hoặc nối chuỗi
+- Khi có bất kỳ operand nào là string, JS ưu tiên nối chuỗi
+- "5" (string) + 3 (number) → coerce 3 thành "3" → "53"
+
+### "5" - 3 = 2 (Numeric Coercion)
+
+- Operator - chỉ dùng cho phép toán số học
+- JS buộc convert cả 2 operand thành number
+- "5" (string) - 3 (number) → convert "5" thành 5 → 5 - 3 = 2
+
+### Quy tắc chung:
+
+- - (cộng): Nếu có string → nối chuỗi; nếu không → cộng số
+- -, \*, /, %: Luôn convert sang số trước khi tính
