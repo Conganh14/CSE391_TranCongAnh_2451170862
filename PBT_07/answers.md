@@ -265,3 +265,139 @@ for (let i = 0; i < 5; i++) {
 - Khi `setTimeout` chạy sau 1 giây, vòng lặp đã hoàn tất và `i` đã tăng đến `5`.
 - Vì vậy bạn sẽ thấy `Item 5` in ra 5 lần.
 - Dùng `let i` tạo biến mới cho mỗi lần lặp, nên mỗi callback in đúng `Item 0`, `Item 1`, ..., `Item 4`.
+
+## Câu C2 — Bài toán thực tế
+
+### Giải pháp
+
+- Input: mảng món ăn chứa `name`, `price`, `quantity`.
+- Tính `subtotal = price * quantity` cho mỗi món và cộng lại.
+- Xác định giảm giá:
+  - `subtotal > 1.000.000` → 15%
+  - `subtotal > 500.000` → 10%
+  - Nếu là Wednesday → +5% nữa.
+- Tính `afterDiscount = subtotal - discountAmount`.
+- Tính VAT 8% trên `afterDiscount`.
+- Tính tip 5% trên `afterDiscount` nếu cần.
+- In hóa đơn chi tiết với định dạng bảng.
+
+### Code mẫu
+
+```js
+function formatCurrency(value) {
+  return value.toLocaleString("vi-VN", { maximumFractionDigits: 0 }) + "đ";
+}
+
+function getDiscountRate(subtotal, day) {
+  let rate = 0;
+  if (subtotal > 1000000) rate = 0.15;
+  else if (subtotal > 500000) rate = 0.1;
+
+  const normalizedDay = String(day).trim().toLowerCase();
+  if (
+    normalizedDay === "wednesday" ||
+    normalizedDay === "wed" ||
+    normalizedDay === "thứ 4" ||
+    normalizedDay === "thứ tư"
+  ) {
+    rate += 0.05;
+  }
+
+  return rate;
+}
+
+function calculateBill(items, day = "", includeTip = false) {
+  const subtotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+  const discountRate = getDiscountRate(subtotal, day);
+  const discountAmount = subtotal * discountRate;
+  const afterDiscount = subtotal - discountAmount;
+  const vatAmount = afterDiscount * 0.08;
+  const tipAmount = includeTip ? afterDiscount * 0.05 : 0;
+  const total = afterDiscount + vatAmount + tipAmount;
+
+  return {
+    subtotal,
+    discountRate,
+    discountAmount,
+    afterDiscount,
+    vatAmount,
+    tipAmount,
+    total,
+  };
+}
+
+function printRestaurantBill(items, day = "", includeTip = false) {
+  const bill = calculateBill(items, day, includeTip);
+  const width = 46;
+  const borderTop = "╔" + "═".repeat(width) + "╗";
+  const borderSep = "╠" + "═".repeat(width) + "╣";
+  const borderBottom = "╚" + "═".repeat(width) + "╝";
+
+  console.log(borderTop);
+  console.log("║" + "HÓA ĐƠN NHÀ HÀNG".padStart(27).padEnd(width) + "║");
+  console.log(borderSep);
+
+  items.forEach((item, index) => {
+    const lineLeft = `${index + 1}. ${item.name}`.padEnd(22);
+    const qty = `x${item.quantity}`.padEnd(5);
+    const unit = `@${formatCurrency(item.price)}`.padEnd(10);
+    const lineRight =
+      `= ${formatCurrency(item.price * item.quantity)}`.padStart(12);
+    console.log("║ " + lineLeft + qty + unit + lineRight + " ║");
+  });
+
+  console.log(borderSep);
+  console.log(
+    "║ " +
+      "Tổng cộng:".padEnd(28) +
+      formatCurrency(bill.subtotal).padStart(14) +
+      " ║",
+  );
+  console.log(
+    "║ " +
+      `Giảm giá (${Math.round(bill.discountRate * 100)}%):`.padEnd(28) +
+      formatCurrency(bill.discountAmount).padStart(14) +
+      " ║",
+  );
+  console.log(
+    "║ " +
+      "VAT (8%):".padEnd(28) +
+      formatCurrency(bill.vatAmount).padStart(14) +
+      " ║",
+  );
+  console.log(
+    "║ " +
+      `Tip (${includeTip ? "5%" : "0%"}):`.padEnd(28) +
+      formatCurrency(bill.tipAmount).padStart(14) +
+      " ║",
+  );
+  console.log(borderSep);
+  console.log(
+    "║ " +
+      "THANH TOÁN:".padEnd(28) +
+      formatCurrency(bill.total).padStart(14) +
+      " ║",
+  );
+  console.log(borderBottom);
+}
+
+// Test example
+const order = [
+  { name: "Phở bò", price: 65000, quantity: 2 },
+  { name: "Trà đá", price: 5000, quantity: 3 },
+  { name: "Bún chả", price: 55000, quantity: 1 },
+];
+
+printRestaurantBill(order, "Wednesday", true);
+```
+
+### Kết quả mong đợi
+
+- `subtotal = 200.000đ`
+- `discount = 0đ` (nếu không đủ điều kiện giảm giá khác)
+- `VAT = 16.000đ`
+- `Tip = 10.000đ` nếu chọn thêm tip 5%
+- `THANH TOÁN = 226.000đ`
