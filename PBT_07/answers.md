@@ -183,3 +183,85 @@ var html = `<div class="card">
     <span>Giá: ${price}đ</span>
 </div>`;
 ```
+
+# PHẦN C — SUY LUẬN
+
+## Câu C1 — Debug JavaScript
+
+### Đã sửa lỗi
+
+```js
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+  if (
+    typeof giaBan !== "number" ||
+    typeof phanTramGiam !== "number" ||
+    isNaN(giaBan) ||
+    isNaN(phanTramGiam)
+  ) {
+    return "Input không hợp lệ";
+  }
+
+  if (phanTramGiam < 0 || phanTramGiam > 100) {
+    return "Phần trăm giảm không hợp lệ";
+  }
+
+  const giamGia = (giaBan * phanTramGiam) / 100;
+  const giaSauGiam = giaBan - giamGia;
+
+  if (giaSauGiam === 0) {
+    console.log("Sản phẩm miễn phí!");
+  }
+
+  return giaSauGiam;
+}
+
+// Test
+const gia = tinhGiaGiamGia(100000, 20);
+console.log("Giá sau giảm: " + gia + "đ");
+
+const gia2 = tinhGiaGiamGia(50000, 110);
+console.log("Giá: " + gia2);
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log("Item " + i);
+  }, 1000);
+}
+```
+
+### Các lỗi và cách sửa
+
+1. `if (giaSauGiam = 0)`
+   - Lỗi: dùng toán tử gán `=` thay vì so sánh.
+   - Hậu quả: `giaSauGiam` bị gán thành `0` và điều kiện luôn false.
+   - Sửa: `if (giaSauGiam === 0)`.
+
+2. `const gia = tinhGiaGiamGia("100000", 20)`
+   - Lỗi: truyền `giaBan` dưới dạng chuỗi.
+   - Hậu quả: JavaScript ép kiểu ngầm, nhưng nếu chuỗi không phải số sẽ ra `NaN`.
+   - Sửa: truyền số `100000` hoặc chuyển `giaBan` thành số trước khi tính.
+
+3. `var giamGia` nên dùng `const` hoặc `let`
+   - Lỗi: `var` có phạm vi hàm và dễ gây nhầm lẫn.
+   - Sửa: `const giamGia = ...` vì giá trị không cần thay đổi.
+
+4. `let giaSauGiam` nên dùng `const`
+   - Lỗi: biến không được gán lại sau khi khởi tạo.
+   - Sửa: `const giaSauGiam = ...` để thể hiện giá trị bất biến.
+
+5. Trả về kiểu dữ liệu không đồng nhất
+   - Lỗi: khi phần trăm giảm sai trả về chuỗi lỗi, khi hợp lệ trả về số.
+   - Hậu quả: gây khó xử lý nếu dùng kết quả cho phép toán tiếp.
+   - Sửa: chuẩn hóa kiểu trả về hoặc xử lý lỗi riêng bằng `throw`/callback.
+
+6. Vòng lặp `for (var i = 0; i < 5; i++)` và `setTimeout`
+   - Lỗi ẩn: `var` là function-scoped, không block-scoped.
+   - Hậu quả: callback `setTimeout` chạy sau khi vòng lặp kết thúc, nên `i` đã là `5`.
+   - Sửa: dùng `let i = 0` để mỗi lần lặp giữ một giá trị `i` riêng.
+
+### Giải thích lỗi ẩn với `var`
+
+- `var` tạo biến chung cho toàn bộ hàm, nên mọi callback đều tham chiếu cùng một `i`.
+- Khi `setTimeout` chạy sau 1 giây, vòng lặp đã hoàn tất và `i` đã tăng đến `5`.
+- Vì vậy bạn sẽ thấy `Item 5` in ra 5 lần.
+- Dùng `let i` tạo biến mới cho mỗi lần lặp, nên mỗi callback in đúng `Item 0`, `Item 1`, ..., `Item 4`.
