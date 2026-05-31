@@ -260,6 +260,4 @@ Kết quả là:
    Ví dụ cụ thể: một trang báo dùng <article> cho mỗi bài viết, bên trong có <h1> tiêu đề và <time> ngày đăng. Khi đó screen reader sẽ thông báo đây là một bài viết độc lập, còn Google cũng dễ nhận diện nội dung chính của trang.
    Tuy nhiên, <div> vẫn rất phù hợp khi dùng làm container bố cục, ví dụ chia cột bằng Flexbox/Grid, bọc nhóm sản phẩm hoặc tạo hiệu ứng animation bằng CSS/JavaScript. Tóm lại, <div> dùng để sắp xếp giao diện, còn semantic HTML dùng để mô tả ý nghĩa nội dung. Dùng đúng chỗ mới là cách làm hiệu quả.
 
-## Link Video Phần D:
-
-1. Link = https://drive.google.com/file/d/1Uw5gjT7Oixxw5ztdyaS2lpooRVsuBtko/view?usp=sharing
+## Link Video Phần D: https://drive.google.com/file/d/1Uw5gjT7Oixxw5ztdyaS2lpooRVsuBtko/view?usp=sharing
