@@ -94,13 +94,11 @@ Breakpoints chuẩn theo Bootstrap:
 Khai báo một lần, dùng ở khắp nơi. Khi cần đổi màu/font/spacing chỉ sửa đúng 1 dòng.
 
 ```scss
-// Khai báo
 $color-primary: #7c3aed;
 $font-size-base: 16px;
 $radius-sm: 6px;
 $transition-base: 0.3s ease;
 
-// Sử dụng
 .btn-primary {
   background: $color-primary;
   font-size: $font-size-base;
@@ -110,7 +108,6 @@ $transition-base: 0.3s ease;
 .badge {
   background: $color-primary;
 }
-// Đổi $color-primary → tất cả tự đổi!
 ```
 
 ## 2. Nesting — CSS theo cấu trúc HTML
@@ -118,19 +115,16 @@ $transition-base: 0.3s ease;
 Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. `&` là ký hiệu tham chiếu đến selector cha.
 
 ```scss
-// SCSS
 .navbar {
   background: #1a202c;
   padding: 16px;
 
   &__logo {
-    // → .navbar__logo
     color: white;
     font-size: 18px;
   }
 
   &__links {
-    // → .navbar__links
     display: flex;
     gap: 24px;
 
@@ -138,12 +132,10 @@ Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. 
       color: rgba(white, 0.8);
 
       &:hover {
-        // → .navbar__links a:hover
         color: white;
       }
 
       &--active {
-        // → .navbar__links a--active
         color: $color-primary;
       }
     }
@@ -152,7 +144,6 @@ Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. 
 ```
 
 ```css
-/* CSS sau khi compile */
 .navbar {
   background: #1a202c;
   padding: 16px;
@@ -183,7 +174,6 @@ Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. 
 Đóng gói một đoạn CSS hay dùng, có thể truyền tham số như hàm trong lập trình.
 
 ```scss
-// Định nghĩa
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -205,7 +195,6 @@ Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. 
   }
 }
 
-// Mixin responsive
 @mixin respond-to($breakpoint) {
   @if $breakpoint == mobile {
     @media (max-width: 576px) {
@@ -222,7 +211,6 @@ Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. 
   }
 }
 
-// Sử dụng
 .modal {
   @include flex-center;
   position: fixed;
@@ -255,7 +243,6 @@ Thay vì lặp lại selector, viết lồng nhau theo đúng cấu trúc HTML. 
 Cho phép một selector kế thừa toàn bộ CSS của selector khác, tránh viết lại.
 
 ```scss
-// SCSS
 .btn-base {
   padding: 8px 16px;
   border: none;
@@ -264,7 +251,7 @@ Cho phép một selector kế thừa toàn bộ CSS của selector khác, tránh
 }
 
 .btn-primary {
-  @extend .btn-base; // kế thừa toàn bộ .btn-base
+  @extend .btn-base;
   background: #7c3aed;
   color: white;
 }
@@ -278,7 +265,6 @@ Cho phép một selector kế thừa toàn bộ CSS của selector khác, tránh
 ```
 
 ```css
-/* CSS sau khi compile — gộp selector lại */
 .btn-base,
 .btn-primary,
 .btn-outline {
