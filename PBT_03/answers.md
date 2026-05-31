@@ -440,4 +440,6 @@ Kết quả: color: green.
 
 Giải thích: Mặc dù có rule .card p { color: inherit }, nhưng thẻ p này có class .highlight. Rule .highlight { color: green !important } có sức mạnh tối thượng nhờ !important, nó đè bẹp tất cả các rule khác để áp đặt màu xanh lá.
 
-## Phần D : Link Video : https://drive.google.com/file/d/1UoXH5bPmipL7qWSJDqnCfMUPzh6BAXIe/view?usp=sharing
+## Phần D :
+
+- Link video : https://drive.google.com/file/d/1UoXH5bPmipL7qWSJDqnCfMUPzh6BAXIe/view?usp=sharing
