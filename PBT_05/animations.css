@@ -15,8 +15,6 @@ body {
   margin: auto;
 }
 
-/*  1. CARD HOVER EFFECT */
-
 .card {
   background: white;
   border-radius: 10px;
@@ -36,8 +34,6 @@ body {
   padding: 10px 20px;
 }
 
-/* 2. BUTTON HOVER */
-
 button {
   margin-left: 20px;
   padding: 10px 20px;
@@ -55,8 +51,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* 3. IMAGE ZOOM*/
-
 .image-box {
   overflow: hidden;
 }
@@ -70,8 +64,6 @@ button:hover {
 .image-box:hover img {
   transform: scale(1.1);
 }
-
-/*  4. LOADING SPINNER*/
 
 .spinner {
   width: 50px;
@@ -92,8 +84,6 @@ button:hover {
     transform: rotate(360deg);
   }
 }
-
-/*  5. FADE IN */
 
 .fade-in {
   animation: fadeIn 1s ease;
