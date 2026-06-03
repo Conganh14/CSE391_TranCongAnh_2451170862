@@ -1,3 +1,5 @@
+## PHẦN A — KIỂM TRA ĐỌC HIỂU
+
 ## Câu A1 — Function Declaration vs Expression vs Arrow
 
 ### 1. Function Declaration
@@ -166,3 +168,65 @@ console.log(product.specs.ram); // 16 — vì spread là shallow copy, `specs` v
 - Khi dùng `const { specs: { ram, color } } = product` thì chỉ `ram` và `color` được khai báo; không có biến `specs` mới trong scope, nên `console.log(specs)` sẽ ném `ReferenceError`.
 - `...product` tạo một shallow copy (sao chép thuộc tính ở mức 1). Thuộc tính nguyên thuỷ (như `price`) được copy giá trị, nên thay đổi `updated.price` không ảnh hưởng `product.price`.
 - Nhưng thuộc tính là object (như `specs`) vẫn là reference — copy nông giữ cùng reference. Thay đổi `copy.specs.ram` sẽ ảnh hưởng `product.specs.ram`.
+
+## PHẦN C — SUY LUẬN
+
+### Câu C1 — Refactor Code
+
+```js
+const processOrders = (orders) =>
+  orders
+    .filter(({ status, total }) => status === "completed" && total > 100000)
+    .map(({ id, customer, total }) => ({
+      id,
+      customer,
+      total,
+      discount: total * 0.1,
+      finalTotal: total * 0.9,
+    }))
+    .sort((a, b) => b.finalTotal - a.finalTotal);
+```
+
+### Câu C2 — Thiết kế API
+
+```js
+const miniArray = {
+  map(arr, fn) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      result.push(fn(arr[i], i, arr));
+    }
+    return result;
+  },
+
+  filter(arr, fn) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (fn(arr[i], i, arr)) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  },
+
+  reduce(arr, fn, initialValue) {
+    let accumulator = initialValue;
+
+    for (let i = 0; i < arr.length; i++) {
+      accumulator = fn(accumulator, arr[i], i, arr);
+    }
+
+    return accumulator;
+  },
+};
+
+// Test
+console.log(miniArray.map([1, 2, 3], (x) => x * 2));
+// [2, 4, 6]
+
+console.log(miniArray.filter([1, 2, 3, 4], (x) => x > 2));
+// [3, 4]
+
+console.log(miniArray.reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+// 10
+```
