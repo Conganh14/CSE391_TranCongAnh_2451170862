@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <h1>🎹 Keyboard App</h1>
+        <button id="openPalette" aria-label="Mở Command Palette (Ctrl+K)">
+          <kbd>Ctrl</kbd> + <kbd>K</kbd> — Command Palette
+        </button>
+      </div>
+
+      <div class="shortcuts-hint" aria-label="Danh sách phím tắt">
+        <span><kbd>←</kbd><kbd>→</kbd> Chuyển ảnh</span>
+        <span><kbd>1</kbd>–<kbd>9</kbd> Nhảy đến ảnh</span>
+        <span><kbd>Space</kbd> Play/Pause</span>
+        <span><kbd>Esc</kbd> Đóng</span>
+        <span><kbd>Ctrl+K</kbd> Command Palette</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="gallery-controls">
+        <button id="prevBtn" aria-label="Ảnh trước (phím ←)">
+          &#8592; Prev
+        </button>
+        <span id="slideInfo" aria-live="polite" aria-atomic="true">1 / 9</span>
+        <button id="nextBtn" aria-label="Ảnh tiếp theo (phím →)">
+          Next &#8594;
+        </button>
+        <button
+          id="playBtn"
+          aria-label="Bắt đầu slideshow (phím Space)"
+          aria-pressed="false"
+        >
+          ▶ Play
+        </button>
+      </div>
+
+      <div
+        class="gallery-grid"
+        id="galleryGrid"
+        role="list"
+        aria-label="Thư viện ảnh"
+      ></div>
+
+      <div
+        id="imageModal"
+        class="modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-box">
+          <button
+            class="modal-close"
+            id="modalClose"
+            aria-label="Đóng (phím Escape)"
+          >
+            ✕
+          </button>
+          <img id="modalImg" src="" alt="" />
+          <div id="modalTitle" class="modal-caption"></div>
+          <div class="modal-nav">
+            <button id="modalPrev" aria-label="Ảnh trước">&#8592;</button>
+            <button id="modalNext" aria-label="Ảnh tiếp theo">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div
+      id="commandPalette"
+      class="palette-overlay hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Command Palette"
+    >
+      <div class="palette-box">
+        <input
+          type="text"
+          id="paletteInput"
+          placeholder="Gõ lệnh... (vd: dark, ảnh, về đầu)"
+          aria-label="Tìm kiếm lệnh"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <ul id="paletteList" role="listbox" aria-label="Danh sách lệnh"></ul>
+        <div class="palette-footer">
+          <span><kbd>↑</kbd><kbd>↓</kbd> Di chuyển</span>
+          <span><kbd>Enter</kbd> Chọn</span>
+          <span><kbd>Esc</kbd> Đóng</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
