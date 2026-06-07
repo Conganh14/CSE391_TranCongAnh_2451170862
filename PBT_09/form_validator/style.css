@@ -1,0 +1,265 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* ===== CARD ===== */
+.page-wrapper {
+  width: 100%;
+  max-width: 460px;
+}
+
+.form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 24px;
+}
+
+/* ===== FIELD GROUP ===== */
+.field-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+/* Bọc input + icon lại với nhau */
+.input-wrapper {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 10px 40px 10px 12px; /* chừa chỗ cho icon bên phải */
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+  color: #333;
+}
+
+input:focus {
+  border-color: #3498db;
+}
+
+/* Khi field VALID → border xanh lá */
+.field-group.valid input {
+  border-color: #27ae60;
+}
+
+/* Khi field INVALID → border đỏ */
+.field-group.invalid input {
+  border-color: #e74c3c;
+}
+
+/* ===== ICON (✅ / ❌) ===== */
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  /* Không cho icon chặn click vào input */
+  pointer-events: none;
+}
+
+/* ===== MESSAGE ===== */
+.msg {
+  font-size: 12px;
+  margin-top: 5px;
+  min-height: 16px; /* Giữ chỗ để layout không nhảy */
+  transition: color 0.2s;
+}
+
+.field-group.valid .msg {
+  color: #27ae60;
+}
+.field-group.invalid .msg {
+  color: #e74c3c;
+}
+
+/* ===== STRENGTH BAR ===== */
+.strength-bar-track {
+  height: 6px;
+  background: #eee;
+  border-radius: 4px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.strength-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 4px;
+  /* Transition cho thanh trượt mượt */
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+/* 3 mức độ — gán qua class JS */
+.strength-bar-fill.weak {
+  width: 33%;
+  background: #e74c3c;
+}
+.strength-bar-fill.medium {
+  width: 66%;
+  background: #f39c12;
+}
+.strength-bar-fill.strong {
+  width: 100%;
+  background: #27ae60;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+#submitBtn {
+  width: 100%;
+  padding: 12px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
+}
+
+#submitBtn:hover:not(:disabled) {
+  background: #2980b9;
+}
+
+/* Disabled: mờ + không cho click */
+#submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  animation: popUp 0.25s ease;
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 8px;
+}
+.modal-desc {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Bảng thông tin người dùng trong modal */
+.modal-info {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.modal-info p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.modal-info p:last-child {
+  margin-bottom: 0;
+}
+.modal-info strong {
+  color: #333;
+}
+
+.modal-close-btn {
+  padding: 10px 32px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: #2980b9;
+}

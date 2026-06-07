@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="form-card">
+        <h1>Đăng ký tài khoản</h1>
+        <p class="subtitle">Điền đầy đủ thông tin để tạo tài khoản</p>
+
+        <form id="registerForm" novalidate>
+          <!-- Tên -->
+          <div class="field-group" id="group-name">
+            <label for="name">Họ và tên</label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="name"
+                placeholder="Nguyễn Văn A"
+                maxlength="50"
+              />
+              <span class="icon" id="icon-name"></span>
+            </div>
+            <p class="msg" id="msg-name"></p>
+          </div>
+
+          <!-- Email -->
+          <div class="field-group" id="group-email">
+            <label for="email">Email</label>
+            <div class="input-wrapper">
+              <input type="email" id="email" placeholder="example@email.com" />
+              <span class="icon" id="icon-email"></span>
+            </div>
+            <p class="msg" id="msg-email"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="field-group" id="group-password">
+            <label for="password">Mật khẩu</label>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="password"
+                placeholder="Nhập mật khẩu..."
+              />
+              <span class="icon" id="icon-password"></span>
+            </div>
+            <!-- Thanh strength meter -->
+            <div class="strength-bar-track">
+              <div class="strength-bar-fill" id="strengthBar"></div>
+            </div>
+            <p class="msg" id="msg-password"></p>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field-group" id="group-confirm">
+            <label for="confirm">Nhập lại mật khẩu</label>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="confirm"
+                placeholder="Nhập lại mật khẩu..."
+              />
+              <span class="icon" id="icon-confirm"></span>
+            </div>
+            <p class="msg" id="msg-confirm"></p>
+          </div>
+
+          <!-- Phone -->
+          <div class="field-group" id="group-phone">
+            <label for="phone">Số điện thoại</label>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                id="phone"
+                placeholder="0901-234-567"
+                maxlength="12"
+              />
+              <span class="icon" id="icon-phone"></span>
+            </div>
+            <p class="msg" id="msg-phone"></p>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="submitBtn" disabled>Đăng ký</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal "Đăng ký thành công" — tạo bằng JS, chèn vào đây khi submit -->
+    <div id="modalArea"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
