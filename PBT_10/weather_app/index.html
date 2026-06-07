@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>🌤️ Weather App</h1>
+
+      <div class="search-row">
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Nhập tên thành phố... (vd: Hanoi, London)"
+          autocomplete="off"
+        />
+        <button id="searchBtn">Tìm</button>
+      </div>
+
+      <div id="stateLoading" class="state hidden">
+        <div class="spinner"></div>
+        <p>Đang tải...</p>
+      </div>
+
+      <div id="stateSuccess" class="state hidden">
+        <div class="weather-card">
+          <div class="weather-icon" id="weatherIcon"></div>
+          <div class="weather-city" id="weatherCity"></div>
+          <div class="weather-temp" id="weatherTemp"></div>
+          <div class="weather-desc" id="weatherDesc"></div>
+          <div class="weather-details">
+            <div class="detail-item">
+              <span class="detail-label">💧 Độ ẩm</span>
+              <span class="detail-value" id="weatherHumidity">—</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">💨 Gió</span>
+              <span class="detail-value" id="weatherWind">—</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">👁️ Tầm nhìn</span>
+              <span class="detail-value" id="weatherVisibility">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stateError" class="state hidden">
+        <div class="error-box">
+          <div class="error-icon">⚠️</div>
+          <p id="errorMsg">Có lỗi xảy ra</p>
+        </div>
+      </div>
+
+      <div class="history-section" id="historySection">
+        <h3>🕐 Tìm kiếm gần đây</h3>
+        <div class="history-list" id="historyList"></div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
